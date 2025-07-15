@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!-- Chosen Palette: Custom Calm & Harmonious (Background: #f8f9fa, Text: #343a40, Primary Accent: #2c5282, Secondary Accent: #2f855a, Highlight: #c05621, Card: #ffffff) -->
+<!-- Application Structure Plan: The SPA is structured as a narrative journey through BPS North Sumatra's ZI transformation. It starts with an inspiring introduction, followed by a sticky navigation bar for easy access to two core pillars: "Pilar Kolaborasi & Integritas" and "Pilar Budaya Kerja". Each pillar section uses visually distinct cards and diagrams to explain key initiatives like SDI collaboration, 100% compliance, and the AMOR & PARHATA programs. This thematic, scroll-based structure, enhanced by smooth navigation, is chosen to tell the story logically and effectively, making the information engaging and easy to digest. -->
+<!-- Visualization & Content Choices:
+- General Text: HTML <p> and <h1>-<h3> for a clear narrative hierarchy.
+- SDI Collaboration: A structured diagram using HTML/CSS (Tailwind flexbox) to visually represent the partnership between BPS, Dinas Kominfo, and Bappelitbang, using icons for clarity.
+- 100% LHKPN/SPT Compliance: A "Single Big Number" visualization with a JavaScript-powered counter to create a dynamic, impactful effect.
+- AMOR Program: A side-by-side "Before vs. After" comparison using card layouts to clearly demonstrate the change in communication culture.
+- PARHATA Application: A descriptive card with key features and an icon representing a digital dashboard, explaining its function in data-driven HR management.
+- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis Interaktif: Kisah Transformasi BPS Sumatera Utara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .header-bg {
+            background: linear-gradient(45deg, #2c5282, #2f855a);
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #2c5282;
+            border-bottom-color: #2c5282;
+        }
+        .text-primary {
+             color: #2c5282;
+        }
+        .text-secondary {
+            color: #2f855a;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="app" class="min-h-screen">
+        <header class="header-bg text-white text-center py-16 px-4">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider">Kisah Inspiratif Transformasi</h1>
+            <p class="mt-4 text-lg md:text-xl max-w-4xl mx-auto opacity-90">Perjalanan BPS Sumatera Utara Menuju Zona Integritas yang Bersih, Akuntabel, dan Berkinerja Tinggi.</p>
+        </header>
+        
+        <nav id="navbar" class="sticky-nav shadow-md">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-center items-center h-16 space-x-6 md:space-x-10">
+                    <a href="#kolaborasi-integritas" class="nav-link font-bold py-2">Kolaborasi & Integritas</a>
+                    <a href="#budaya-kerja" class="nav-link font-bold py-2">Budaya Kerja</a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container mx-auto px-4 py-16">
+            
+            <p class="text-center max-w-4xl mx-auto text-lg leading-relaxed mb-16">
+                Di tengah hiruk pikuk pembangunan, BPS Sumatera Utara telah mengukir sebuah kisah transformasi yang menginspirasi. Perjalanan menuju Zona Integritas (ZI) ini bukan sekadar target, melainkan sebuah komitmen mendalam. Mari kita telusuri sorotan-sorotan kunci dari perjalanan luar biasa ini.
+            </p>
+
+            <section id="kolaborasi-integritas" class="mb-24">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-4">Pilar Kolaborasi dan Integritas</h2>
+                <p class="text-center max-w-3xl mx-auto mb-12 text-lg">Membangun sinergi untuk data berkualitas dan menegakkan akuntabilitas sebagai fondasi utama.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card">
+                        <h3 class="text-2xl font-bold text-secondary mb-4">Sinergi Satu Data Indonesia (SDI)</h3>
+                        <p class="mb-6 text-gray-700">Untuk memastikan data berkualitas dapat diakses dan dimanfaatkan secara optimal, BPS Sumatera Utara menjalin kemitraan erat dengan dua instansi kunci di tingkat provinsi.</p>
+                        <div class="flex flex-col sm:flex-row items-center justify-around gap-4 text-center">
+                            <div class="flex flex-col items-center p-4 rounded-lg">
+                                <span class="text-4xl mb-2">🏢</span>
+                                <span class="font-bold">BPS Sumut</span>
+                            </div>
+                            <span class="text-3xl font-bold text-primary">+</span>
+                            <div class="flex flex-col items-center p-4 rounded-lg">
+                                <span class="text-4xl mb-2">💻</span>
+                                <span class="font-bold">Dinas Kominfo</span>
+                                <span class="text-sm text-gray-600">(Walidata)</span>
+                            </div>
+                             <span class="text-3xl font-bold text-primary">+</span>
+                             <div class="flex flex-col items-center p-4 rounded-lg">
+                                <span class="text-4xl mb-2">📈</span>
+                                <span class="font-bold">Bappelitbang</span>
+                                <span class="text-sm text-gray-600">(Koordinator)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card flex flex-col items-center justify-center text-center">
+                        <h3 class="text-2xl font-bold text-secondary mb-4">Komitmen Integritas Penuh</h3>
+                        <p class="mb-4 text-gray-700">Sebagai bukti konkret akuntabilitas, seluruh pegawai telah melaporkan LHKPN & SPT tepat waktu.</p>
+                        <div class="text-7xl font-black text-primary" id="compliance-counter">0</div>
+                        <div class="text-2xl font-bold text-primary">% Kepatuhan</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="budaya-kerja" class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-primary mb-4">Pilar Budaya Kerja yang Mengubah</h2>
+                <p class="text-center max-w-3xl mx-auto mb-12 text-lg">Transformasi sejati dimulai dari dalam, menciptakan lingkungan kerja yang adaptif, partisipatif, dan penuh semangat.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card">
+                        <h3 class="text-2xl font-bold text-secondary mb-6 text-center">Inovasi Komunikasi: AMOR</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 border-r border-gray-200">
+                                <h4 class="font-bold text-lg mb-2 text-gray-500">Sebelumnya</h4>
+                                <p class="text-sm text-gray-600">Suasana Senin yang membosankan dan komunikasi satu arah.</p>
+                            </div>
+                            <div class="text-center p-4">
+                                <h4 class="font-bold text-lg mb-2 text-secondary">Setelahnya</h4>
+                                <p class="text-sm text-gray-600">Senin dinanti, komunikasi terbuka dan partisipatif setiap minggu.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                         <h3 class="text-2xl font-bold text-secondary mb-4 text-center">Manajemen SDM Berbasis Data: PARHATA</h3>
+                         <p class="text-center text-gray-700">Aplikasi digital untuk mengelola performa dan portofolio ASN secara sistematis, memastikan keputusan pengembangan SDM yang objektif, valid, dan kredibel.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="bg-gray-800 text-white text-center py-8 mt-16">
+            <p>&copy; 2025 BPS Provinsi Sumatera Utara. Berkomitmen pada Data, Berdedikasi untuk Pelayanan.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animated Counter
+            const counter = document.getElementById('compliance-counter');
+            const target = 100;
+            let current = 0;
+            const increment = target / 100;
+
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.innerText = Math.ceil(current);
+                    setTimeout(updateCounter, 20); // Adjust speed here
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            // Intersection Observer for counter animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateCounter();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(counter);
+
+            // Sticky Nav Active State on Scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const onScroll = () => {
+                let currentSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 90) { // 90 is a bit more than nav height
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', onScroll);
+        });
+    </script>
+</body>
+</html>
